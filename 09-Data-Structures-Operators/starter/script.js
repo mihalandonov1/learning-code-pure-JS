@@ -1,5 +1,36 @@
 'use strict';
 
+document.body.append(document.createElement('textarea'));
+document.body.append(document.createElement('button'));
+
+const text = document.querySelector('textarea').value;
+
+document.querySelector('button').addEventListener('click', function () {
+  const text = document.querySelector('textarea').value;
+  const arr = [text];
+  const newArr = arr[0].toLowerCase().split(' ');
+  const spltArr = newArr[0].replaceAll('\n', ' ');
+  const splitedArr = spltArr.split(' ');
+  for (let i = 0; i < splitedArr.length; i++) {
+    const a = splitedArr[i].slice(0, splitedArr[i].lastIndexOf('_'));
+    const b = splitedArr[i].slice(
+      splitedArr[i].lastIndexOf('_') + 1,
+      splitedArr[i].length
+    );
+    const restWord = b.slice(1, b.length);
+    const capLetter = b[0].toUpperCase();
+
+    const firstWord = a;
+    const secondWord = capLetter + restWord;
+
+    const updatedData = firstWord.concat(secondWord);
+
+    const updateWithDonut = updatedData.padEnd(20);
+    console.log(`${updateWithDonut}${'🍩'.repeat(i + 1)}`);
+  }
+});
+
+/*
 const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
 
 const openingHours = {
@@ -51,7 +82,7 @@ const restaurant = {
     console.log(otherIngredients);
   },
 };
-
+*/
 //------------START-----------------
 //
 //
